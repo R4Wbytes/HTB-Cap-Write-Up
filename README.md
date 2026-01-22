@@ -101,7 +101,6 @@ Esto confirma una vulnerabilidad **IDOR (Insecure Direct Object Reference)**: es
 ---
 
 ### 1.4 Análisis de PCAP con Wireshark
-
 ![evidence-05-dashboard](notes/evidence-05-dashboard)
 
 **Descripción:**  
