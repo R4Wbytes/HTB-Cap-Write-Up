@@ -5,8 +5,6 @@
 **Fecha:** `2026-01-21`  
 **Autor del write-up:** `R4Wbytes`  
 
-> Nota OPSEC: no reutilizar credenciales fuera del laboratorio.
-
 ---
 
 ## Resumen ejecutivo
@@ -101,8 +99,7 @@ Esto confirma una vulnerabilidad **IDOR (Insecure Direct Object Reference)**: es
 ---
 
 ### 1.4 Análisis de PCAP con Wireshark
-![evidence-05-dashboard](notes/evidence-05-dashboard)
-
+![evidence-05-dashboard.png](notes/evidence-05-dashboard.png)
 **Descripción:**  
 Se inspeccionó el PCAP expuesto. Dado que **FTP transmite credenciales en texto claro**, se priorizó el canal de control FTP.
 
@@ -119,7 +116,7 @@ El filtro reveló credenciales en texto claro:
 
 Estas credenciales permiten probar reutilización contra otros servicios expuestos, en particular **SSH/22**.
 
-> Nota: si el write-up se publica, se recomienda **redactar** la contraseña.
+
 
 ---
 
@@ -178,7 +175,7 @@ Se obtuvo el flag de usuario, validando el objetivo **user-level** antes de proc
 
 Tras obtener acceso como `nathan`, se realizó enumeración local automatizada para identificar vectores de escalada (SUID/SGID, `sudoers`, capabilities, servicios y configuraciones débiles). Para ello se transfirió y ejecutó LinPEAS desde el host atacante mediante un servidor HTTP temporal.
 
-> Buenas prácticas: en entornos reales, evite ejecutar scripts por *pipe* (p. ej., `curl | bash`) sin revisión/validación previa. En laboratorio resulta práctico, pero no es un patrón recomendable.
+
 
 ### 3.2 Hallazgo clave: capabilities peligrosas en `python3.8`
 
